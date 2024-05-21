@@ -3,6 +3,8 @@ package com.liambaron.blog;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,12 +15,19 @@ public class DatabaseModel {
     private String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private Connection con = null;
 
+    public DatabaseModel() {
+    }
+     
     public void connect() {
         try {
+            Class.forName(driver);
             con = DriverManager.getConnection(connection);
             System.out.println("The Connection was successful");
         }catch(SQLException e) {
-            System.out.println("Connection was unsuccessful");        
+            System.out.println("Connection was unsuccessful");
+            System.out.println(e.getMessage());        
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
