@@ -11,12 +11,11 @@ CREATE TABLE roles (
 )
 
 CREATE TABLE account (
-	accountID INT IDENTITY(1,1) NOT NULL,
 	username VARCHAR(40) NOT NULL,
 	[password] VARCHAR(40) NOT NULL,
-	about VARCHAR(255) DEFAULT '',
+	about VARCHAR(255) DEFAULT ' ',
 	roleID INT NOT NULL,
-	PRIMARY KEY (accountID),
+	PRIMARY KEY (username),
 	FOREIGN KEY (roleID) REFERENCES roles(roleID)
 )
 
@@ -27,7 +26,7 @@ VALUES
 
 INSERT INTO account 
 VALUES
-('admin', 'admin1',DEFAULT, 1)
+('admin', 'admin1',DEFAULT, 2)
 
 SELECT * 
 FROM account

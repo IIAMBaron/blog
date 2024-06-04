@@ -8,18 +8,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Chat Room</title>
         <%-- Create a NAV Bar with logout on the left and profile on the right
              We are going to be using Boostrap CSS again 
         --%>
+        <link rel="stylesheet" href="resources/positions.css"/>
     </head>
-    <body>
-        <textarea rows="4" cols="50" id="messages"></textarea><br>
-        <button onclick="test()" type='button'>Click Me!</button><br>
-        <p id='test1'></p>
+    <body onload="connect()">
+        <div class="center">
+            <textarea rows="4" cols="50" id="messenger"></textarea><br>
+            <button onclick="message()" type='button'>Click Me!</button><br>
+            <p id='text'></p>
+        </div>
+        
     </body>
     
-    
-    <script src="websock.js"></script>
+    <script src="static/websocket.js"></script>
 </html>

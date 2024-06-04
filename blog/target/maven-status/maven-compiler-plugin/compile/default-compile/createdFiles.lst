@@ -1,2 +1,3 @@
+com\liambaron\blog\Account.class
 com\liambaron\blog\DatabaseModel.class
 com\liambaron\blog\DatabaseWebService.class

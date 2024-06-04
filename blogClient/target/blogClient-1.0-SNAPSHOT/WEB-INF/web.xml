@@ -13,9 +13,21 @@
         <servlet-name>chatRoom</servlet-name>
         <jsp-file>/chat.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <jsp-file>/register.jsp</jsp-file>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>chatRoom</servlet-name>
         <url-pattern>/chatroom</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

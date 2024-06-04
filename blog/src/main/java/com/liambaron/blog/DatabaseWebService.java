@@ -1,5 +1,7 @@
 package com.liambaron.blog;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -10,28 +12,82 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "DatabaseWebService")
 public class DatabaseWebService {
+    DatabaseModel x = new DatabaseModel();
+    Account y = new Account();
 
-    /**
-     * This is a sample web service operation
-     */
     @WebMethod(operationName = "createAcc")
-    public String createAcc(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    public String createAcc(@WebParam(name = "username") String username, @WebParam(name = "password") String password) {
+        x.connect();
+        int check = x.updateDel("INSERT INTO account VALUES ('"+username + "', '" + password + "' , ' ', 1)");
+        System.out.println(check);
+        if (check == 0) {
+            return "That username is unavailable";
+        }
+        return "Account created succefully";
     }
 
     @WebMethod(operationName = "delAcc")
-    public String delAcc(@WebParam(name = "name") String txt) {
+    public String delAcc(@WebParam(name = "username") String username) {
+        x.connect();
+        int check = x.updateDel("DELETE FROM account WHERE username = '" + username + "'");
+        
+        if (check == 0) {
+            return "Invalid username";
+        }
+        return "Account successfully deleted";
+    }
+
+// Still need to think of a plan about the update. I can eventually add it.
+    @WebMethod(operationName = "updateAcc")
+    public String updateAcc(@WebParam(name = "name") String txt) {
+        x.connect();
         return "Hello " + txt + " !";
     }
 
     @WebMethod(operationName = "detailsAcc")
-    public String detailsAcc(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    public Account detailsAcc(@WebParam(name = "username") String username) {
+        x.connect();
+        ResultSet result = x.statement("SELECT * FROM account WHERE username = '"+ username +"'");
+        try {
+            if (!result.next()) {
+                return null;
+            }
+            while (result.next()) {
+                y.setUsername(result.getString("username"));
+                y.setPassword(result.getString("password"));
+                y.setAbout(result.getString("about"));
+                y.setRole(result.getInt("roleID"));
+            }
+        } catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return y;
+    }
+
+    @WebMethod(operationName = "checkPass")
+    public String checkPass(@WebParam(name = "username") String username, @WebParam(name = "password") String password) {
+        String sqlPass = "";
+        String sqlUsername = "";
+        x.connect();
+        ResultSet rs = x.statement("SELECT * FROM account WHERE username = '" + username + "' AND password = '" + password + "'");
+        
+        try {
+            while (rs.next()) {
+                sqlUsername = rs.getString("username");
+                sqlPass = rs.getString("password");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        if (username.equals(sqlUsername) && password.equals(sqlPass)) {
+            return "Successful";
+        }
+        return "Unsuccessful";
     }
 
     @WebMethod(operationName = "testConnection")
     public String testConnection() {
-        DatabaseModel x = new DatabaseModel();
         x.connect();
         return "It has successfully connected on the webservice";
     }

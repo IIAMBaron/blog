@@ -2,7 +2,10 @@ package com.liambaron.blog;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,14 +14,17 @@ import java.util.logging.Logger;
  * @author Liam Baron
  */
 public class DatabaseModel {
-    private String connection = "jdbc:sqlserver://localhost:1433;databaseName=Blog;user=Liam;password=1;encrypt=false";
-    private String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private final String connection = "jdbc:sqlserver://localhost:1433;databaseName=Blog;user=Liam;password=1;encrypt=false";
+    private final String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private Connection con = null;
 
     public DatabaseModel() {
     }
      
     public void connect() {
+        if (con != null) {
+            return;
+        }
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(connection);
@@ -40,9 +46,25 @@ public class DatabaseModel {
         }         
     }
 
-    public void statement() {
+    public ResultSet statement(String query) {
+        try {
+            Statement sttmt = con.createStatement();
+            ResultSet test = sttmt.executeQuery(query);
+            return test;
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
-    public void updateDel() {
+    public int updateDel(String query) {
+        try {
+            PreparedStatement sttmt = con.prepareStatement(query);
+            int result = sttmt.executeUpdate();
+            return result;
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
     }
 }
