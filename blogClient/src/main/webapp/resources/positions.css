@@ -3,8 +3,35 @@
     Author     : Liam Baron
 */
 
+.msg {
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    width: 375px;
+    word-wrap: break-word;
+}
+
 .center {
-    margin: auto;
+    position: absolute;
+    top: 80%;
+    left: 35%;
     width: 25%;
-    height: 123px;
+    vertical-align: bottom;
+}
+
+.changeSize {
+    resize: none;
+}
+
+.border-secondary {
+    
+}
+
+.border {
+    border: 20px;
+}
+
+p {
+    padding: 10px;
+    border-radius: 5px;
 }

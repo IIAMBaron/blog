@@ -15,12 +15,23 @@
              We are going to be using Boostrap CSS again 
         --%>
         <link rel="stylesheet" href="resources/positions.css"/>
+        <link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand mx-auto text-center" href="#" style="display: flex; justify-content: space-around;" >BLOG</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+        </ul>
+    </nav>
     </head>
     <body onload="connect()">
-        <div class="center">
-            <textarea rows="4" cols="50" id="messenger"></textarea><br>
-            <button onclick="message()" type='button'>Click Me!</button><br>
-            <p id='text'></p>
+        <div class="msg" id="messages">
+        </div>
+        <div class="center" >
+            <textarea class="changeSize" rows="4" cols="50" id="messenger"></textarea><br>
+            <button type="button" class="btn btn-primary " onclick="message()" type='button'>Click Me!</button><br>
         </div>
         
     </body>

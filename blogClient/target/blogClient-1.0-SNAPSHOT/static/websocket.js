@@ -4,19 +4,34 @@ function connect() {
     ws = new WebSocket("ws://localhost:8080/blogClient/chatroom/endpoint");
     
     ws.onmessage = function(event) {
-        document.getElementById("text").innerText = event.data;
+        var newMessage = document.createElement("p");
+        var box = document.createElement("span");
+        box.className = "border border-secondary";
+        
+        var containedMessage = document.createTextNode(event.data);
+        newMessage.appendChild(containedMessage);
+        box.appendChild(newMessage);
+        
+        const div = document.getElementById("messages");
+        div.appendChild(box);
     };
 }
 
 function message() {
+    var textareaValue = document.getElementById("messenger").value;
+    var encodedValue = encodeURIComponent(textareaValue);
+    
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "broadcast", true);
-    xhr.setRequestHeader("message", document.getElementById("messenger").value);
+    
+    // Need to find a different way to send message
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     document.getElementById("messenger").value = "";
+    
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             console.log(xhr.responseText);
             }
     };
-    xhr.send();
+    xhr.send(encodedValue);
 }

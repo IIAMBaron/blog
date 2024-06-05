@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
         <title>Register</title>
     </head>
     <body>

@@ -1,6 +1,8 @@
 package com.liambaron.blogclient;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URLDecoder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +19,24 @@ public class broadcast extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String message = request.getHeader("message");
+        // Read the raw data from the request body
+        BufferedReader reader = request.getReader();
+        StringBuilder data = new StringBuilder();
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            data.append(line);
+        }
+        reader.close();
+
+        String decodedData = URLDecoder.decode(data.toString(), "UTF-8");
+
+        System.out.println("Encoded Value: " + decodedData);
+
         MyWebSocketEndpoint webSocketEndpoint = new MyWebSocketEndpoint();
-        webSocketEndpoint.broadcastMessage(message);
+        webSocketEndpoint.broadcastMessage(decodedData);
+
         response.getWriter().write("Message broadcasted");
-    }
+        }
 
 }

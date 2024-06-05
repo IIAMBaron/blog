@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
+        <link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
     </head>
     <body>
         <h1>Login</h1>
