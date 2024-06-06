@@ -17,5 +17,6 @@ previous version - gfv3ee6
 -->
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.8-web</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>gfv5ee8</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_DatabaseWebService>http://localhost:8080/blog/DatabaseWebService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_DatabaseWebService>
     </properties>
 </project-shared-configuration>

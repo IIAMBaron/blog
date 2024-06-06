@@ -15,14 +15,19 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form action="">
+        <form action="checkcredentials" method="POST">
             <label>Username</label><br>
-            <input type="text" id="username"><br>
+            <input type="text" id="username" name="username"><br>
             <label>Password</label><br>
-            <input type="password" id="password"><br>
+            <input type="password" id="password" name="password"><br>
             <button type="submit" >Login</button><br>
         </form>
         
+        
+        <% 
+        System.out.println(request.getAttribute("valid"));
+           
+        %>
         <a href="register">Don't have an account?</a>
     </body>
 </html>

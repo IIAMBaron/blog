@@ -6,16 +6,18 @@
 .msg {
     position: absolute;
     top: 10%;
-    left: 40%;
-    width: 375px;
+    left: 35%;
+    width: 425px;
+    height: 525px;
     word-wrap: break-word;
+    overflow-y: auto;
 }
 
 .center {
     position: absolute;
     top: 80%;
     left: 35%;
-    width: 25%;
+    width: 35%;
     vertical-align: bottom;
 }
 
@@ -23,15 +25,21 @@
     resize: none;
 }
 
-.border-secondary {
-    
-}
-
-.border {
-    border: 20px;
-}
-
 p {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 391px;
+    height: auto;
     padding: 10px;
-    border-radius: 5px;
+}
+
+span {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+a {
+    margin-left: 20px;
 }

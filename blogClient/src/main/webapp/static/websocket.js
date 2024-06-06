@@ -5,13 +5,17 @@ function connect() {
     
     ws.onmessage = function(event) {
         var newMessage = document.createElement("p");
+        var profile = document.createElement("a");
+        profile.textContent = "profile";
+        //profile.className = something
         var box = document.createElement("span");
         box.className = "border border-secondary";
         
         var containedMessage = document.createTextNode(event.data);
         newMessage.appendChild(containedMessage);
+        box.appendChild(profile);
         box.appendChild(newMessage);
-        
+        box.style.display = "inline-block";
         const div = document.getElementById("messages");
         div.appendChild(box);
     };

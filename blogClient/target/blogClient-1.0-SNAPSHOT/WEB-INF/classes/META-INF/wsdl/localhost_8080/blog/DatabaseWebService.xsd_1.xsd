@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://blog.liambaron.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://blog.liambaron.com/">
+
+<xs:element name="account" type="tns:account"/>
+
+<xs:element name="checkPass" type="tns:checkPass"/>
+
+<xs:element name="checkPassResponse" type="tns:checkPassResponse"/>
+
+<xs:element name="createAcc" type="tns:createAcc"/>
+
+<xs:element name="createAccResponse" type="tns:createAccResponse"/>
+
+<xs:element name="delAcc" type="tns:delAcc"/>
+
+<xs:element name="delAccResponse" type="tns:delAccResponse"/>
+
+<xs:element name="detailsAcc" type="tns:detailsAcc"/>
+
+<xs:element name="detailsAccResponse" type="tns:detailsAccResponse"/>
+
+<xs:element name="testConnection" type="tns:testConnection"/>
+
+<xs:element name="testConnectionResponse" type="tns:testConnectionResponse"/>
+
+<xs:element name="updateAcc" type="tns:updateAcc"/>
+
+<xs:element name="updateAccResponse" type="tns:updateAccResponse"/>
+
+<xs:complexType name="testConnection">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="testConnectionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkPass">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkPassResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="detailsAcc">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="detailsAccResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:account" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="account">
+<xs:sequence>
+<xs:element name="about" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="role" type="xs:int"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="delAcc">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="delAccResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAcc">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAccResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAcc">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAccResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
