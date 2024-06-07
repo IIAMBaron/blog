@@ -40,7 +40,9 @@ public class registerAccountServlet extends HttpServlet {
             response.sendRedirect("chatroom");
             return;
         }
-
+        HttpSession session = request.getSession();
+        System.out.println("It was unsuccessful");
+        session.setAttribute("failed", "Username already exists");
         response.sendRedirect("register");
     }
 

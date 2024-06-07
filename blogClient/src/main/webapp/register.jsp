@@ -18,10 +18,11 @@
         
         <form action="action">
             <label>Username</label><br>
-            <input type="text" id="newUsername"><br>
+            <input type="text" id="newUsername" required="true"><br>
             <label>Password</label><br>
-            <input type="password" id="newPassword"><br>
+            <input type="password" id="newPassword" required="true"><br>
             <button type="submit">Register</button>
+            <p class="text-danger" >${failed}</p>
         </form>
     </body>
 </html>

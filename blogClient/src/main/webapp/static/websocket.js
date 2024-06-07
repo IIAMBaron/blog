@@ -1,12 +1,13 @@
 var ws;
-
+var profile;
 function connect() {
     ws = new WebSocket("ws://localhost:8080/blogClient/chatroom/endpoint");
     
     ws.onmessage = function(event) {
         var newMessage = document.createElement("p");
-        var profile = document.createElement("a");
-        profile.textContent = "profile";
+        profile = document.createElement("a");
+        profile.value = '<%= session.getAttribute("username") %>';
+        
         //profile.className = something
         var box = document.createElement("span");
         box.className = "border border-secondary";
@@ -21,10 +22,11 @@ function connect() {
     };
 }
 
-function message() {
+function message(username) {
     var textareaValue = document.getElementById("messenger").value;
     var encodedValue = encodeURIComponent(textareaValue);
     
+    profile.textContent = username.data;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "broadcast", true);
     

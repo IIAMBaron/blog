@@ -51,8 +51,9 @@ public class checkCredentialsServlet extends HttpServlet {
             response.sendRedirect("chatroom");
             return;
         }
-        request.setAttribute("valid", "invalid");
+        HttpSession session = request.getSession();
+        System.out.println("It was unsuccessful");
+        session.setAttribute("error", "Invalid credentials");
         response.sendRedirect("login");
-
     }
 }

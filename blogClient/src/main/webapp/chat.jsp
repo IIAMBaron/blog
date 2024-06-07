@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
     
     </head>
-    <body onload="connect()">
+    <body onload="connect();">
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,9 +49,8 @@
         </div>
         <div class="center" >
             <textarea class="changeSize" rows="4" cols="52" id="messenger"></textarea><br>
-            <button type="button" class="btn btn-primary " onclick="message()" type='button'>Click Me!</button><br>
+            <button type="button" class="btn btn-primary " onclick="message('<%= session.getAttribute("username") %>')" type='button'>Click Me!</button><br>
         </div>
     </body>
-    
     <script src="static/websocket.js"></script>
 </html>
