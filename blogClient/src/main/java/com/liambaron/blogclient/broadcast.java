@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
@@ -29,7 +31,10 @@ public class broadcast extends HttpServlet {
         }
         reader.close();
 
-        String decodedData = URLDecoder.decode(data.toString(), "UTF-8");
+        HttpSession session = request.getSession();
+        String username = session.getAttribute("username").toString();
+
+        String decodedData = username + " " +URLDecoder.decode(data.toString(), "UTF-8") ;
 
         System.out.println("Encoded Value: " + decodedData);
 

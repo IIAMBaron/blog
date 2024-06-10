@@ -16,7 +16,7 @@
     <body>
         <h1>Sign Up</h1>
         
-        <form action="action">
+        <form action="registeraccount" method="POST">
             <label>Username</label><br>
             <input type="text" id="newUsername" required="true"><br>
             <label>Password</label><br>

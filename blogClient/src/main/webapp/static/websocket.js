@@ -1,18 +1,20 @@
 var ws;
 var profile;
+var currentUsername;
 function connect() {
     ws = new WebSocket("ws://localhost:8080/blogClient/chatroom/endpoint");
     
     ws.onmessage = function(event) {
+        var username = event.data.split(" ")[0];
+        console.log("Into the onmessage function");
         var newMessage = document.createElement("p");
         profile = document.createElement("a");
-        profile.value = '<%= session.getAttribute("username") %>';
         
-        //profile.className = something
         var box = document.createElement("span");
         box.className = "border border-secondary";
         
-        var containedMessage = document.createTextNode(event.data);
+        var containedMessage = document.createTextNode(event.data.substring(username.length));
+        profile.innerHTML = username;
         newMessage.appendChild(containedMessage);
         box.appendChild(profile);
         box.appendChild(newMessage);
@@ -23,10 +25,14 @@ function connect() {
 }
 
 function message(username) {
+    currentUsername = username;
+    console.log(username);
+    
+    console.log("admin again mate");
     var textareaValue = document.getElementById("messenger").value;
     var encodedValue = encodeURIComponent(textareaValue);
     
-    profile.textContent = username.data;
+    
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "broadcast", true);
     

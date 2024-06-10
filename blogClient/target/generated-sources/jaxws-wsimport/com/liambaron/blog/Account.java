@@ -134,5 +134,4 @@ public class Account {
     public String toString() {
         return username + " " + password + " " + about + " " + role;
     }
-
 }
