@@ -36,7 +36,7 @@
         <a class="nav-link" href="#">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="login">Logout</a>
+        <a class="nav-link" href="logout">Logout</a>
       </li>
       <li class="nav-item">
         <a class="nav-link mx-auto" style="display: inline-block" href="#">About</a>
@@ -50,9 +50,6 @@
         <div class="center" >
             <textarea class="changeSize" rows="4" cols="52" id="messenger"></textarea><br>
             <button type="button" class="btn btn-primary " onclick="message('<%= session.getAttribute("username") %>')" type='button'>Click Me!</button><br>
-            <% 
-              System.out.println(session.getId());
-            %>
         </div>
     </body>
     <script src="static/websocket.js"></script>

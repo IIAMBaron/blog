@@ -18,9 +18,9 @@
         
         <form action="registeraccount" method="POST">
             <label>Username</label><br>
-            <input type="text" id="newUsername" required="true"><br>
+            <input type="text" name="newUsername" required="true"><br>
             <label>Password</label><br>
-            <input type="password" id="newPassword" required="true"><br>
+            <input type="password" name="newPassword" required="true"><br>
             <button type="submit">Register</button>
             <p class="text-danger" >${failed}</p>
         </form>

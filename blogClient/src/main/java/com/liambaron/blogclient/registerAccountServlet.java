@@ -22,9 +22,10 @@ public class registerAccountServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
+        String username = request.getParameter("newUsername");
+        String password = request.getParameter("newPassword");
+        System.out.println(username);
+        System.out.println(password);
         DatabaseWebService_Service service = new DatabaseWebService_Service();
         DatabaseWebService database = service.getDatabaseWebServicePort();
 

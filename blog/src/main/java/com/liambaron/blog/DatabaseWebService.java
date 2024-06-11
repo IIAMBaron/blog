@@ -20,7 +20,7 @@ public class DatabaseWebService {
         x.connect();
         int check = x.updateDel("INSERT INTO account VALUES ('"+username + "', '" + password + "' , ' ', 1)");
         System.out.println(check);
-        if (check == 0) {
+        if (check == -1) {
             return "That username is unavailable";
         }
         return "Account created succefully";

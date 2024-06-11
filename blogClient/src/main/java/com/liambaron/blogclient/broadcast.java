@@ -21,12 +21,16 @@ public class broadcast extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String message = request.getParameter("textareaValue");
         // Read the raw data from the request body
         BufferedReader reader = request.getReader();
+        System.out.println("This is the reader by the way");
+        System.out.println(reader);
         StringBuilder data = new StringBuilder();
         String line;
 
         while ((line = reader.readLine()) != null) {
+            System.out.println(line);
             data.append(line);
         }
         reader.close();
@@ -34,7 +38,7 @@ public class broadcast extends HttpServlet {
         HttpSession session = request.getSession();
         String username = session.getAttribute("username").toString();
 
-        String decodedData = username + " " +URLDecoder.decode(data.toString(), "UTF-8") ;
+        String decodedData = username + " " + message ;
 
         System.out.println("Encoded Value: " + decodedData);
 

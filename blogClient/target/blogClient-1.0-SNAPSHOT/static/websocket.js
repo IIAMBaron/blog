@@ -1,42 +1,44 @@
 var ws;
 var profile;
-var currentUsername;
+
 function connect() {
     ws = new WebSocket("ws://localhost:8080/blogClient/chatroom/endpoint");
     
     ws.onmessage = function(event) {
+        console.log("This is the onmessage event.data")
+        console.log(event.data);
         var username = event.data.split(" ")[0];
-        console.log("Into the onmessage function");
         var newMessage = document.createElement("p");
         profile = document.createElement("a");
-        
         var box = document.createElement("span");
-        box.className = "border border-secondary";
-        
+        const div = document.getElementById("messages");
         var containedMessage = document.createTextNode(event.data.substring(username.length));
+        
+        box.className = "border border-secondary";
+        box.style.display = "inline-block";
         profile.innerHTML = username;
+        
+        
         newMessage.appendChild(containedMessage);
         box.appendChild(profile);
         box.appendChild(newMessage);
-        box.style.display = "inline-block";
-        const div = document.getElementById("messages");
         div.appendChild(box);
     };
 }
 
-function message(username) {
-    currentUsername = username;
-    console.log(username);
-    
-    console.log("admin again mate");
+function message() {   
+    // Changes the text need to look into this
     var textareaValue = document.getElementById("messenger").value;
+    console.log(textareaValue);
     var encodedValue = encodeURIComponent(textareaValue);
+    console.log(encodedValue);
+    
+    console.log("Seeing what happens when the \n is pressed")
     
     
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "broadcast", true);
     
-    // Need to find a different way to send message
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     document.getElementById("messenger").value = "";
     
@@ -45,5 +47,5 @@ function message(username) {
             console.log(xhr.responseText);
             }
     };
-    xhr.send(encodedValue);
+    xhr.send("textareaValue="+textareaValue);
 }
