@@ -1,28 +1,22 @@
 var ws;
 var profile;
+var arr = [];
 
 function connect() {
+    console.log("This event has fired causeing the connect function to run");
     ws = new WebSocket("ws://localhost:8080/blogClient/chatroom/endpoint");
     
     ws.onmessage = function(event) {
         console.log("This is the onmessage event.data")
         console.log(event.data);
         var username = event.data.split(" ")[0];
-        var newMessage = document.createElement("p");
-        profile = document.createElement("a");
-        var box = document.createElement("span");
-        const div = document.getElementById("messages");
         var containedMessage = document.createTextNode(event.data.substring(username.length));
         
-        box.className = "border border-secondary";
-        box.style.display = "inline-block";
-        profile.innerHTML = username;
+        createMessage(username, containedMessage);
+
+        arr.push(event.data);
+        sessionStorage.setItem("autosave", JSON.stringify(arr));
         
-        
-        newMessage.appendChild(containedMessage);
-        box.appendChild(profile);
-        box.appendChild(newMessage);
-        div.appendChild(box);
     };
 }
 
@@ -48,4 +42,40 @@ function message() {
             }
     };
     xhr.send("textareaValue="+textareaValue);
+}
+
+function sessionMessages() {
+    var sessionMessages = JSON.parse(sessionStorage.getItem("autosave"));
+    
+    if (sessionMessages != null) {
+        arr = sessionMessages;
+        for (var i = 0; i < sessionMessages.length; i++) {
+            var username = sessionMessages[i].split(" ")[0];
+            var containedMessage = document.createTextNode(sessionMessages[i].substring(username.length));
+            
+            createMessage(username, containedMessage);
+        }
+    }
+}
+
+function createMessage(username, containedMessage) {
+    var newMessage = document.createElement("p");
+    profile = document.createElement("a");
+    var box = document.createElement("span");
+    const div = document.getElementById("messages");
+    
+    box.className = "border border-secondary";
+    box.style.display = "inline-block";
+    profile.innerHTML = username;
+
+
+    newMessage.appendChild(containedMessage);
+    box.appendChild(profile);
+    box.appendChild(newMessage);
+    div.appendChild(box);
+    
+    console.log(box.scrollHeight);
+    console.log(box)
+    //Deciding if I am going to leave it like this or am I going to make it flexible like WhatApp
+    box.scrollIntoView();
 }

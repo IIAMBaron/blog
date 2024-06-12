@@ -12,20 +12,20 @@
         <title>Login</title>
         <link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
+        <link rel="stylesheet" href="resources/global.css">
     </head>
     <body>
-        <h1>Login</h1>
-        <form action="checkcredentials" method="POST">
-            <label>Username</label><br>
-            <input type="text" id="username" name="username" required="true"><br>
-            <label>Password</label><br>
-            <input type="password" id="password" name="password" required="true"><br>
-            <button type="submit" >Login</button><br>
-            <p class="text-danger">${error}</p><br>
-        </form>
-        
-        
-        
-        <a href="register">Don't have an account?</a>
+        <div class="global">
+            <h1>Login</h1>
+            <form action="checkcredentials" method="POST" >
+                <label>Username</label><br>
+                <input type="text" id="username" name="username" required="true"><br>
+                <label>Password</label><br>
+                <input type="password" id="password" name="password" required="true"><br>
+                <button type="submit" >Login</button><br>
+                <p class="text-danger">${error}</p><br>
+            </form>
+            <a href="register">Don't have an account?</a>
+        </div>
     </body>
 </html>

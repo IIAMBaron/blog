@@ -19,18 +19,18 @@
         <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
     
     </head>
-    <body onload="connect();">
+    <body onload="connect(); sessionMessages();">
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Blog</a>
+  <a class="navbar-brand" href="/blogClient">Blog</a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="chatroom">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profile</a>
@@ -49,7 +49,7 @@
         </div>
         <div class="center" >
             <textarea class="changeSize" rows="4" cols="52" id="messenger"></textarea><br>
-            <button type="button" class="btn btn-primary " onclick="message('<%= session.getAttribute("username") %>')" type='button'>Click Me!</button><br>
+            <button type="button" class="btn btn-primary " onclick="message()" type='button'>Click Me!</button><br>
         </div>
     </body>
     <script src="static/websocket.js"></script>
