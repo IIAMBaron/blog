@@ -37,21 +37,22 @@ public class DatabaseWebService {
         return "Account successfully deleted";
     }
 
-// Still need to think of a plan about the update. I can eventually add it.
     @WebMethod(operationName = "updateAcc")
-    public String updateAcc(@WebParam(name = "name") String txt) {
+    public String updateAcc(@WebParam(name = "username") String username, @WebParam(name = "about") String about) {
         x.connect();
-        return "Hello " + txt + " !";
+        int check = x.updateDel("UPDATE Account SET about = '" + about + "' WHERE username = '" + username + "'");
+        if (check == 0) {
+            return "Not Updated";
+        }
+        return "Updated";
     }
 
     @WebMethod(operationName = "detailsAcc")
     public Account detailsAcc(@WebParam(name = "username") String username) {
         x.connect();
-        ResultSet result = x.statement("SELECT * FROM account WHERE username = '"+ username +"'");
+        
         try {
-            if (!result.next()) {
-                return null;
-            }
+            ResultSet result = x.statement("SELECT * FROM account WHERE username = '"+ username +"'");
             while (result.next()) {
                 y.setUsername(result.getString("username"));
                 y.setPassword(result.getString("password"));

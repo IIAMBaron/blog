@@ -11,12 +11,10 @@
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Chat Room</title>
-        <%-- Create a NAV Bar with logout on the left and profile on the right
-             We are going to be using Boostrap CSS again 
-        --%>
         <link rel="stylesheet" href="resources/positions.css"/>
         <link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
+        <link rel="stylesheet" href="resources/global.css">
     
     </head>
     <body onload="connect(); sessionMessages();">
@@ -30,13 +28,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="chatroom">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/blogClient/chatroom">Chatroom <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link" href="/blogClient/chatroom/profile/<%= session.getAttribute("username")%>">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="logout">Logout</a>
+        <a class="nav-link" href="/blogClient/logout">Logout</a>
       </li>
       <li class="nav-item">
         <a class="nav-link mx-auto" style="display: inline-block" href="#">About</a>

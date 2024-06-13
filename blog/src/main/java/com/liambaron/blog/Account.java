@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Account {
+    // This bean will allow us to store values about a user and will make it easier for parsing in the web service
     private String username;
     private String password;
     private String about;

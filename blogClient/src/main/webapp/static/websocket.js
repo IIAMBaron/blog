@@ -67,6 +67,7 @@ function createMessage(username, containedMessage) {
     box.className = "border border-secondary";
     box.style.display = "inline-block";
     profile.innerHTML = username;
+    profile.setAttribute("href", "chatroom/profile/"+ username);
 
 
     newMessage.appendChild(containedMessage);

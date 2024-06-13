@@ -18,6 +18,7 @@ public class logoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // This is invalidating a session and redirecting to the login screen
         HttpSession session = request.getSession();
         session.invalidate();
         System.out.println("This person has logged out");

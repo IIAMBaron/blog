@@ -18,28 +18,20 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "checkCredentialsServlet", urlPatterns = {"/checkcredentials"})
 public class checkCredentialsServlet extends HttpServlet {
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("It is in the doPost method");
+        // Retrieve the username and password inputted by the user
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(username);
-        System.out.println(password);
 
+        // Calls a function to check whether the password was incorrect or not
         DatabaseWebService_Service sv = new DatabaseWebService_Service();
         DatabaseWebService database = sv.getDatabaseWebServicePort();
 
         String result = database.checkPass(username, password);
-        System.out.println(result);
+
+        // Now that we have the result we need to check if the user is authorised
         if (result.equals("Successful")) {
 
             HttpSession sessions = request.getSession();
@@ -51,6 +43,7 @@ public class checkCredentialsServlet extends HttpServlet {
             response.sendRedirect("chatroom");
             return;
         }
+        // If not we return with an error message
         HttpSession session = request.getSession();
         System.out.println("It was unsuccessful");
         session.setAttribute("error", "Invalid credentials");

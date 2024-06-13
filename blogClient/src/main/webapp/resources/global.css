@@ -4,7 +4,6 @@
 */
 
 .global {
-    position: absolute;
-    left: 35%;
+    margin: auto;
     text-align: center;
 }

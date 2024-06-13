@@ -19,6 +19,7 @@ public class checkLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // This checks if this user has been authorised and if not return to the login screen
         HttpSession session = request.getSession();
             
         Object username = session.getAttribute("username");

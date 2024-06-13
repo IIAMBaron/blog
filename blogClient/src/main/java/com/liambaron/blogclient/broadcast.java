@@ -2,7 +2,6 @@ package com.liambaron.blogclient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URLDecoder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,19 +20,8 @@ public class broadcast extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Get the message and combine it with the username and broadcast it
         String message = request.getParameter("textareaValue");
-        // Read the raw data from the request body
-        BufferedReader reader = request.getReader();
-        System.out.println("This is the reader by the way");
-        System.out.println(reader);
-        StringBuilder data = new StringBuilder();
-        String line;
-
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
-            data.append(line);
-        }
-        reader.close();
 
         HttpSession session = request.getSession();
         String username = session.getAttribute("username").toString();
