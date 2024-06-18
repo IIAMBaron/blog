@@ -1,6 +1,6 @@
 <%-- 
-    Document   : register
-    Created on : 04 Jun 2024, 2:01:43 PM
+    Document   : about
+    Created on : 18 Jun 2024, 11:51:06 AM
     Author     : Liam Baron
 --%>
 
@@ -9,11 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>About</title>
         <link rel="stylesheet" href="resources/positions.css"/>
         <link rel="stylesheet" href="resources/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="static/bootstrap/bootstrap.min.js">
         <link rel="stylesheet" href="resources/global.css">
-        <title>Register</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -27,23 +27,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/blogClient/chatroom">Chatroom <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link mx-auto" style="display: inline-block" href="/blogClient/about">About</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div class="global">
-            <h1>Sign Up</h1>
-            <form action="registeraccount" method="POST">
-                <label>Username</label><br>
-                <input type="text" name="newUsername" required="true"><br>
-                <label>Password</label><br>
-                <input type="password" name="newPassword" required="true"><br>
-                <button type="submit">Register</button>
-                <p class="text-danger" >${failed}</p>
-            </form>
-        </div>
-
+        <h1>Hi my name is Liam Baron and I created this blog application.</h1>
     </body>
 </html>

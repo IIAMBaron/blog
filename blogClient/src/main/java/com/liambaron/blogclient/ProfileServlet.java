@@ -28,11 +28,9 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("this is in the doGet method");
         String pathInfo = request.getPathInfo();
-        System.out.println(request.getPathInfo());
 
-
+        // checks after the slash to see if there is something if there is we will get the users details if valid
         if (pathInfo != null && pathInfo.length() > 1) {
             String username = pathInfo.substring(1);
             DatabaseWebService_Service port = new DatabaseWebService_Service();
@@ -41,7 +39,6 @@ public class ProfileServlet extends HttpServlet {
             Account details = database.detailsAcc(username);
             System.out.println(details == null);
             if (details != null) {
-                System.out.println("It is not null");
                 request.setAttribute("username", username);
                 System.out.println(details.getUsername());
                 request.setAttribute("about", details.getAbout());
@@ -49,10 +46,5 @@ public class ProfileServlet extends HttpServlet {
                 fw.forward(request, response);
             }
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
     }
 }

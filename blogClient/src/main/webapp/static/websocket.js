@@ -23,12 +23,7 @@ function connect() {
 function message() {   
     // Changes the text need to look into this
     var textareaValue = document.getElementById("messenger").value;
-    console.log(textareaValue);
     var encodedValue = encodeURIComponent(textareaValue);
-    console.log(encodedValue);
-    
-    console.log("Seeing what happens when the \n is pressed")
-    
     
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "broadcast", true);
@@ -75,8 +70,9 @@ function createMessage(username, containedMessage) {
     box.appendChild(newMessage);
     div.appendChild(box);
     
-    console.log(box.scrollHeight);
-    console.log(box)
-    //Deciding if I am going to leave it like this or am I going to make it flexible like WhatApp
     box.scrollIntoView();
+}
+// Add more functionality in the future
+function editProfile() {
+    
 }
