@@ -28,6 +28,7 @@ public class MyWebSocketEndpoint {
             for (Session session : sessions) {
                 try {
                     session.getBasicRemote().sendText(message);
+                    
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

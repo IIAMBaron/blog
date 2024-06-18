@@ -14,6 +14,8 @@ import java.util.logging.Logger;
  * @author Liam Baron
  */
 public class DatabaseModel {
+    // This is what happens under the hood I made it so the user does not interact with the database at all by using these
+    // type of commands server-side
     private final String connection = "jdbc:sqlserver://localhost:1433;databaseName=Blog;user=Liam;password=1;encrypt=false";
     private final String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private Connection con = null;

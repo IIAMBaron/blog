@@ -4,6 +4,18 @@
 <xsd:import namespace="http://blog.liambaron.com/" schemaLocation="http://localhost:8080/blog/DatabaseWebService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="delAcc">
+<part name="parameters" element="tns:delAcc"/>
+</message>
+<message name="delAccResponse">
+<part name="parameters" element="tns:delAccResponse"/>
+</message>
+<message name="updateAcc">
+<part name="parameters" element="tns:updateAcc"/>
+</message>
+<message name="updateAccResponse">
+<part name="parameters" element="tns:updateAccResponse"/>
+</message>
 <message name="detailsAcc">
 <part name="parameters" element="tns:detailsAcc"/>
 </message>
@@ -22,25 +34,21 @@
 <message name="testConnectionResponse">
 <part name="parameters" element="tns:testConnectionResponse"/>
 </message>
-<message name="updateAcc">
-<part name="parameters" element="tns:updateAcc"/>
-</message>
-<message name="updateAccResponse">
-<part name="parameters" element="tns:updateAccResponse"/>
-</message>
 <message name="createAcc">
 <part name="parameters" element="tns:createAcc"/>
 </message>
 <message name="createAccResponse">
 <part name="parameters" element="tns:createAccResponse"/>
 </message>
-<message name="delAcc">
-<part name="parameters" element="tns:delAcc"/>
-</message>
-<message name="delAccResponse">
-<part name="parameters" element="tns:delAccResponse"/>
-</message>
 <portType name="DatabaseWebService">
+<operation name="delAcc">
+<input wsam:Action="http://blog.liambaron.com/DatabaseWebService/delAccRequest" message="tns:delAcc"/>
+<output wsam:Action="http://blog.liambaron.com/DatabaseWebService/delAccResponse" message="tns:delAccResponse"/>
+</operation>
+<operation name="updateAcc">
+<input wsam:Action="http://blog.liambaron.com/DatabaseWebService/updateAccRequest" message="tns:updateAcc"/>
+<output wsam:Action="http://blog.liambaron.com/DatabaseWebService/updateAccResponse" message="tns:updateAccResponse"/>
+</operation>
 <operation name="detailsAcc">
 <input wsam:Action="http://blog.liambaron.com/DatabaseWebService/detailsAccRequest" message="tns:detailsAcc"/>
 <output wsam:Action="http://blog.liambaron.com/DatabaseWebService/detailsAccResponse" message="tns:detailsAccResponse"/>
@@ -53,21 +61,31 @@
 <input wsam:Action="http://blog.liambaron.com/DatabaseWebService/testConnectionRequest" message="tns:testConnection"/>
 <output wsam:Action="http://blog.liambaron.com/DatabaseWebService/testConnectionResponse" message="tns:testConnectionResponse"/>
 </operation>
-<operation name="updateAcc">
-<input wsam:Action="http://blog.liambaron.com/DatabaseWebService/updateAccRequest" message="tns:updateAcc"/>
-<output wsam:Action="http://blog.liambaron.com/DatabaseWebService/updateAccResponse" message="tns:updateAccResponse"/>
-</operation>
 <operation name="createAcc">
 <input wsam:Action="http://blog.liambaron.com/DatabaseWebService/createAccRequest" message="tns:createAcc"/>
 <output wsam:Action="http://blog.liambaron.com/DatabaseWebService/createAccResponse" message="tns:createAccResponse"/>
 </operation>
-<operation name="delAcc">
-<input wsam:Action="http://blog.liambaron.com/DatabaseWebService/delAccRequest" message="tns:delAcc"/>
-<output wsam:Action="http://blog.liambaron.com/DatabaseWebService/delAccResponse" message="tns:delAccResponse"/>
-</operation>
 </portType>
 <binding name="DatabaseWebServicePortBinding" type="tns:DatabaseWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="delAcc">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateAcc">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="detailsAcc">
 <soap:operation soapAction=""/>
 <input>
@@ -95,25 +113,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="updateAcc">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="createAcc">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="delAcc">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

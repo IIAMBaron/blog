@@ -28,6 +28,39 @@ public interface DatabaseWebService {
      * 
      * @param username
      * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "delAcc", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.DelAcc")
+    @ResponseWrapper(localName = "delAccResponse", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.DelAccResponse")
+    @Action(input = "http://blog.liambaron.com/DatabaseWebService/delAccRequest", output = "http://blog.liambaron.com/DatabaseWebService/delAccResponse")
+    public String delAcc(
+        @WebParam(name = "username", targetNamespace = "")
+        String username);
+
+    /**
+     * 
+     * @param about
+     * @param username
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateAcc", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.UpdateAcc")
+    @ResponseWrapper(localName = "updateAccResponse", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.UpdateAccResponse")
+    @Action(input = "http://blog.liambaron.com/DatabaseWebService/updateAccRequest", output = "http://blog.liambaron.com/DatabaseWebService/updateAccResponse")
+    public String updateAcc(
+        @WebParam(name = "username", targetNamespace = "")
+        String username,
+        @WebParam(name = "about", targetNamespace = "")
+        String about);
+
+    /**
+     * 
+     * @param username
+     * @return
      *     returns com.liambaron.blog.Account
      */
     @WebMethod
@@ -71,21 +104,6 @@ public interface DatabaseWebService {
 
     /**
      * 
-     * @param name
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateAcc", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.UpdateAcc")
-    @ResponseWrapper(localName = "updateAccResponse", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.UpdateAccResponse")
-    @Action(input = "http://blog.liambaron.com/DatabaseWebService/updateAccRequest", output = "http://blog.liambaron.com/DatabaseWebService/updateAccResponse")
-    public String updateAcc(
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
      * @param password
      * @param username
      * @return
@@ -101,20 +119,5 @@ public interface DatabaseWebService {
         String username,
         @WebParam(name = "password", targetNamespace = "")
         String password);
-
-    /**
-     * 
-     * @param username
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "delAcc", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.DelAcc")
-    @ResponseWrapper(localName = "delAccResponse", targetNamespace = "http://blog.liambaron.com/", className = "com.liambaron.blog.DelAccResponse")
-    @Action(input = "http://blog.liambaron.com/DatabaseWebService/delAccRequest", output = "http://blog.liambaron.com/DatabaseWebService/delAccResponse")
-    public String delAcc(
-        @WebParam(name = "username", targetNamespace = "")
-        String username);
 
 }
